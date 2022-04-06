@@ -38,27 +38,25 @@ console.log(userNum, randomNum)
 userValue = document.getElementById("btn").addEventListener("click", getNums);
 
 function getNums(){
-        let userValue = document.getElementById("userinput").value;
-        userNum.push(userValue);
-        console.log(userNum)
-        if(userNum.length === 5){
-            console.log(randomNum)
-            this.removeEventListener("click", getNums);
-            for(i=0; i< userNum.length; i++){
-                for(let c = 0; c < randomNum.length; c++){
-                    console.log(c, userNum[i], randomNum[c], guessed, guessednum)
-                    if(parseInt(userNum) === randomNum[c]){
-                        randomNum.splice(c, 1)
-                        guessed++;
-                        guessednum.push(randomNum[c]);
-
-                    }
+    let userValue = document.getElementById("userinput").value;
+    userValue = parseInt(userValue);
+    userNum.push(userValue);
+    if(userNum.length === 5){
+        console.log(randomNum)
+        this.removeEventListener("click", getNums);
+        for(i=0; i< userNum.length; i++){
+            for(let c = 0; c < randomNum.length; c++){
+                if(userNum[i] === randomNum[c]){
+                    guessed++;
+                    guessednum.push(randomNum[c]);
+                    randomNum.splice(c,1);
                 }
             }
-            end.innerHTML = `
-            hai indovinato ${guessed} numeri e sono ${guessednum}
-        `;
         }
+        end.innerHTML = `
+        hai indovinato ${guessed} numeri e sono ${guessednum}
+        `;
+    }
 }
 
 
