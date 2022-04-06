@@ -32,12 +32,15 @@ function reset(){
 
 /* l'utente inserisce i numeri che ha visto*/
 let userNum = [];
-for(let i = 0; i < 5; i++){
-    userNum[i] = document.getElementById("btn").addEventListener("click", userVal);
-}
-console.log(userNum)
-function userVal(){
-    let userValue = document.getElementById("userinput").value;
-    console.log(userValue)
-    return userValue;
+let userValue = [];
+userValue = document.getElementById("btn").addEventListener("click", getNums);
+
+function getNums(){
+    
+    while(userNum.length <5){
+        let userValue = document.getElementById("userinput").value;
+        userNum.push(userValue);
+        console.log(userNum)
+    }
+    
 }
